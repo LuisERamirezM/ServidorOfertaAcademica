@@ -14,7 +14,7 @@ cursor = conexion.cursor()
 @app.route("/api/v1/materias/")
 def hello():
     query = "SELECT oferta.nrc, clave.clave, clave.materia, seccion.seccion, profesor.nombre, detalle.creditos, detalle.cupos_totales, detalle.cupos_disponibles, dia.identificador, dia.dia FROM dias left join oferta on oferta.nrc = dias.nrc left join clave on clave.id = oferta.id_clave left join seccion on seccion.id = oferta.id_seccion left join profesor on profesor.id = oferta.id_profesor left join detalle on detalle.id = oferta.id_detalle left join dia on dia.id = dias.id_dia"
-    #query = "SELECT oferta.nrc, clave.clave, clave.materia, seccion.seccion, profesor.nombre, detalle.creditos, detalle.cupos_totales, detalle.cupos_disponibles, dia.identificador, dia.dia, carrera.nombre FROM dias left join oferta on oferta.nrc = dias.nrc left join clave on clave.id = oferta.id_clave left join seccion on seccion.id = oferta.id_seccion left join profesor on profesor.id = oferta.id_profesor left join detalle on detalle.id = oferta.id_detalle left join dia on dia.id = dias.id_dia left join carrera on carrera.id = oferta.id_carrera"
+    #corregido///query = "SELECT oferta.nrc, clave.clave, clave.materia, seccion.seccion, profesor.nombre, detalle.creditos, detalle.cupos_totales, detalle.cupos_disponibles, dia.identificador, dia.dia, oferta.carrera FROM dias left join oferta on oferta.nrc = dias.nrc left join clave on clave.id = oferta.id_clave left join seccion on seccion.id = oferta.id_seccion left join profesor on profesor.id = oferta.id_profesor left join detalle on detalle.id = oferta.id_detalle left join dia on dia.id = dias.id_dia"
     cursor.execute(query)
     ofertas = cursor.fetchall()
 
